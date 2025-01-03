@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+
+        }
+
+        function getComputerChoice() {
+             let destiny = getRandomInt(3)
+             if (destiny == 1) {
+                return "rock";
+             } else if (destiny == 2) {
+                return "paper";
+             } else {
+                return "scissors";
+             }
+        }
+        
+        function getHumanChoice() {
+            let choose = prompt("Choose rock, paper or scissors")
+            choose = choose.toLowerCase();
+
+            if (choose == "rock") {
+                return "rock";
+            } else if (choose == "paper") {
+                return "paper";
+            } else if (choose == "scissors") {
+                return "scissors";
+            } else {
+                alert("Choose a valid option!");
+            }
+        }
+
+        function playRound(humanChoice, computerChoice){
+        if (humanChoice == computerChoice) {
+            alert("It's a tie, no one wins.");
+        } else if (humanChoice == "paper" && computerChoice == "rock" || humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "scissors" && computerChoice == "paper") {
+         alert(`You win! ${humanChoice} beats ${computerChoice}`)
+         humanScore += 1;
+        } else {
+            alert(`You lose! ${computerChoice} beats ${humanChoice}`)
+            computerScore += 1;
+        }
+    };
+
+    function playGame() {
+
+let choiceH;
+let choiceC;
+
+        for (i = 1; i < 5; i++) {
+
+            choiceH = getHumanChoice();
+            choiceC = getComputerChoice();
+
+            playRound(choiceH, choiceC)
+        };
+
+        if (humanScore > computerScore) {
+            alert("Congratulations, you win!");
+        } else if (computerScore > humanScore) {
+            alert("You lost!");
+        } else {
+            alert("TIEEEE!");
+        }
+        
+    }
+
+    playGame();
+
+
+    </script>
+</head>
+<body>
+    
+    
+</body>
+</html>
